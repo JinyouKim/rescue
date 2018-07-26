@@ -55,5 +55,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
 
 
 if __name__ == '__main__':
+    socketserver.TCPServer.allow_reuse_address = True
     server = socketserver.TCPServer((HOST, PORT), RequestHandler)
+    print('acv')
     server.serve_forever()

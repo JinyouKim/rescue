@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 import socketserver
 import threading
 from common import message

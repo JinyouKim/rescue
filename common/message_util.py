@@ -9,8 +9,8 @@ class MessageUtil:
     @staticmethod
     def send(sock, msg):
         sent = 0
-        buffer = msg.GetBytes()
-        while sent < msg.GetSize():
+        buffer = msg.getBytes()
+        while sent < msg.getSize():
             sent += sock.send(buffer)
 
     @staticmethod

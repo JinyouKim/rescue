@@ -7,58 +7,61 @@ from common import message
 from common.message import Message
 
 from common.message_header import Header
-from common.message_body import BodyCommonResponse
-from common.message_body import BodyConnectRequest
-
+from common.message_body import BodyCommonResponse, BodyEmpty, BodyConnectRequest
 
 from common.message_util import MessageUtil
-
 
 CHUNK_SIZE = 4096
 
 if __name__ == '__main__':
-	if len(sys.argv) < 2:
-		print("usage: {0} <server IP>".format(sys.argv[0]))
-		sys.exit(0)
-	
-	serverIp = sys.argv[1]
-	serverPort = 9111
+    if len(sys.argv) < 2:
+        print("usage: {0} <server IP>".format(sys.argv[0]))
+        sys.exit(0)
 
-	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    serverIp = sys.argv[1]
+    serverPort = 9000
 
-	try:
-		ret = -1
-		print("1")
-		while ret != 0:
-			print('2')
-			ret = sock.connect_ex((serverIp, serverPort))
-			time.sleep(2)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-		print('3')
-		reqMsg = Message()
-		regMsg.Body = BodyConnectRequest(None)
-		self.RESQUER_ID = 1
+    try:
+        ret = -1
+        while ret != 0:
+            ret = sock.connect_ex((serverIp, serverPort))
+            time.sleep(2)
 
-		reqMsg.Header = Header(None)
-		reqMsg.Header.MSGTYPE = message.REQ_CONNECT
-		reqMsg.Header.BODYLEN = reqMsg.Body.GetSize()
+        reqMsg = Message()
+        reqMsg.Body = BodyConnectRequest(None)
+        reqMsg.Body.RESQUER_ID = '1'
+        reqMsg.Header = Header(None)
+        reqMsg.Header.MSGTYPE = message.REQ_CONNECT
+        reqMsg.Header.BODYLEN = reqMsg.Body.getSize()
 
-		MessageUtil.send(sock, reqMsg)
-		print('abc')
-		rspMsg = MessageUtil.receive(sock)
+        MessageUtil.send(sock, reqMsg)
+        rspMsg = MessageUtil.receive(sock)
 
-		if rspMsg.Header.MSGTYPE != message.REP_CONNECT:
-			print("Error")
-			exit(0)
-		if rspMsg.Body.RESPONSE != message.ACCEPT:
-			print("Connection is refused.")
-			exit(0)
+        if rspMsg.Header.MSGTYPE != message.REP_CONNECT:
+            print("Error")
+            exit(0)
+        if rspMsg.Body.RESPONSE != message.ACCEPTED:
+            print("Connection is refused.")
+            exit(0)
 
-	except Exception as err:
-		print("Exception")
-		print(err)
+        print("Connected with server")
 
-	sock.close()
+        # 버튼 구현 필요
+        input = input()
+        # 카메라
+        if input == 'c':
+            reqMsg = Message()
+            reqMsg.Body = BodyEmpty()
+            reqMsg.Header = Header(None)
+            reqMsg.Header.MSGTYPE = message.REQ_VIDEO_STREAMING
+            reqMsg.Header.BODYLEN = 0
+            MessageUtil.send(sock, reqMsg)
 
 
+    except Exception as err:
+        print("Exception")
+        print(err)
 
+    sock.close()

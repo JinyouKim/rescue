@@ -7,12 +7,12 @@ class Header(ISerializable):
         self.struct_len = struct.calcsize(self.struct_fmt)
 
         if buffer != None:
-            unpacked = struct.unpack(self.structfmt, buffer)
+            unpacked = struct.unpack(self.struct_fmt, buffer)
 
             self.MSGTYPE = unpacked[0]
             self.BODYLEN = unpacked[1]
 
-    def getByte(self):
+    def getBytes(self):
         return struct.pack(self.struct_fmt, *(self.MSGTYPE, self.BODYLEN))
 
     def getSize(self):

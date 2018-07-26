@@ -12,15 +12,14 @@ class BodyCommonResponse(ISerializable):
 
             self.RESPONSE = unpacked[0]
 
-        def GetBytes(self):
-            return struct.pack(self.struct_fmt, *(self.RESPONSE))
+    def getBytes(self):
+            return struct.pack(self.struct_fmt, self.RESPONSE)
 
-        def GetSize(self):
+    def getSize(self):
             return self.struct_len
 
-
 class BodyConnectRequest(ISerializable):
-    def _init__(self, buffer):
+    def __init__(self, buffer):
         if buffer != None:
             slen = len(buffer)
             self.struct_fmt = str.format('{0}s', slen)
@@ -33,18 +32,27 @@ class BodyConnectRequest(ISerializable):
             self.struct_len = struct.calcsize(self.struct_fmt)
             self.RESQUER_ID = ""
 
-    def GetBytes(self):
+    def getBytes(self):
         buffer = self.RESQUER_ID.encode(encoding='utf-8')
 
         # 1 unsigned long long, N character
         self.struct_fmt = str.format('{0}s', len(buffer))
 
-        return struct.pack(
-            self.struct_fmt, *(buffer))
+        return struct.pack(self.struct_fmt, buffer)
 
-    def GetSize(self):
+    def getSize(self):
         buffer = self.RESQUER_ID.encode(encoding='utf-8')
 
         self.struct_fmt = str.format('{0}s', len(buffer))
         self.struct_len = struct.calcsize(self.struct_fmt)
         return self.struct_len
+
+class BodyEmpty(ISerializable):
+    def __init__(self):
+        None
+
+    def getBytes(self):
+        return bytes()
+
+    def getSize(self):
+        return 0

@@ -30,6 +30,7 @@ class Ui_RequestDialog(object):
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.buttonBox.accepted.connect(self.accept_clicked)
+        self.buttonBox.rejected.connect(self.reject_clicked)
         self.textBrowser = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser.setGeometry(QtCore.QRect(0, 0, 501, 201))
         font = QtGui.QFont()
@@ -48,6 +49,11 @@ class Ui_RequestDialog(object):
 
     def accept_clicked(self):
         print("123")
+        self.ret = 0
+
+    def reject_clicked(self):
+        print('234')
+        self.ret = 1
 
     def retranslateUi(self, Dialog, text):
         _translate = QtCore.QCoreApplication.translate

@@ -52,12 +52,32 @@ if __name__ == '__main__':
         input = input()
         # 카메라
         if input == 'c':
+            ret = -1
             reqMsg = Message()
             reqMsg.Body = BodyEmpty()
             reqMsg.Header = Header(None)
             reqMsg.Header.MSGTYPE = message.REQ_VIDEO_STREAMING
             reqMsg.Header.BODYLEN = 0
+            # 스트리밍 연결 요청
             MessageUtil.send(sock, reqMsg)
+            # 통화음 또는 연결 화면 보이는 로직 필요
+
+            # 연결 수락 대기
+            rspMsg = MessageUtil.receive(sock)
+
+            if rspMsg.Header.MSGTYPE != message.REP_VIDEO_STREAMING:
+                print('Error')
+                exit(0)
+
+            # 서버에서 수락하면
+            if rspMsg.Body.RESPONSE == message.ACCEPTED:
+                print('streaming accept')
+            # 서버에서 거절하면
+            else:
+                print('streaming denied')
+
+
+
 
 
     except Exception as err:

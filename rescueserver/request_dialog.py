@@ -12,7 +12,8 @@ class RequestDialog():
         window = QDialog()
         ui = Ui_RequestDialog()
         ui.setupUi(window, self.rescuer_info)
-
         window.show()
+
         app.exec_()
+        return ui.ret
 

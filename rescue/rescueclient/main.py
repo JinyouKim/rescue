@@ -4,13 +4,13 @@ import socket
 import struct
 import time
 
-from common import message
-from common.message import Message
+from rescue.common import message
+from rescue.common.message import Message
 
-from common.message_header import Header
-from common.message_body import BodyCommonResponse, BodyEmpty, BodyConnectRequest
+from rescue.common.message_header import Header
+from rescue.common.message_body import BodyEmpty, BodyConnectRequest
 
-from common.message_util import MessageUtil
+from rescue.common.message_util import MessageUtil
 
 CHUNK_SIZE = 4096
 

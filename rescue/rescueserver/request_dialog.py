@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog
-from rescueserver.ui.ui_request_dialog import Ui_RequestDialog
+from rescue.rescueserver.ui.ui_request_dialog import Ui_RequestDialog
 
 
 class RequestDialog():

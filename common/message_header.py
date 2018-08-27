@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .message import ISerializable
 import struct
 

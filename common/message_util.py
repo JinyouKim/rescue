@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from common import message
 from .message import Message
 from .message_header import Header

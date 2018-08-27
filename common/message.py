@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 메세지 타입
 REQ_CONNECT = 0x01
 REP_CONNECT = 0x02

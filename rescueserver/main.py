@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import os
 import socketserver
 import sys
 import threading
+import pyaudio
 
 from PyQt5.QtWidgets import QApplication, QDialog
 
@@ -12,6 +14,7 @@ from common.message_header import Header
 from common.message_body import BodyCommonResponse
 from rescueserver.request_dialog import RequestDialog
 from rescueserver.ui.ui_request_dialog import Ui_RequestDialog
+import vlc
 
 HOST = ''
 PORT = 9000
@@ -23,6 +26,7 @@ class RescuerManager:
     def __init__(self):
         self.rescuers = {}  # {rescuer ID: (socket, address), ...}
         self.isCalling = False
+        self.hasToken = True
         self.lock = threading.Lock();
 
     def addRescuer(self, rescuerId, conn, address):
@@ -37,6 +41,16 @@ class RescuerManager:
     def getCallStatus(self):
         with self.lock:
             return self.isCalling
+
+    def lockToken(self):
+        with self.lock:
+            self.hasToken = False
+    def freeToken(self):
+        with self.lock:
+            self.hasToken = True
+    def getTokenStatus(self):
+        with self.lock:
+            return self.hasToken
 
 
 class RequestHandler(socketserver.BaseRequestHandler):
@@ -64,8 +78,25 @@ class RequestHandler(socketserver.BaseRequestHandler):
                 MessageUtil.send(client, rspMsg)
                 continue
 
-            elif reqMsg.Header.MSGTYPE == message.REQ_GET_TOKEN:
-                None
+            elif reqMsg.Header.MSGTYPE == message.REQ_GET_TOKEN:    # 음성 토큰 요청
+                rspMsg = Message()
+                rspMsg.Body = BodyCommonResponse(None)
+                rspMsg.Body.RESPONSE = message.ACCEPTED
+
+                rspMsg.Header = Header(None)
+                rspMsg.Header.MSGTYPE = message.REP_GET_TOKEN
+                rspMsg.Header.BODYLEN = rspMsg.Body.getSize()
+
+                if self.rm.getTokenStatus() == True:
+                    self.rm.lockToken()
+                    print('token 방출')
+                else:
+                    rspMsg.Body.RESPONSE = message.DENIED
+                    print('token 없음')
+
+                MessageUtil.send(client, rspMsg)
+                continue
+
             elif reqMsg.Header.MSGTYPE == message.REQ_RETURN_TOKEN:
                 None
             elif reqMsg.Header.MSGTYPE == message.REQ_VIDEO_STREAMING:
@@ -86,6 +117,15 @@ class RequestHandler(socketserver.BaseRequestHandler):
                     if (ret == 0):
                         MessageUtil.send(client, rspMsg)
 
+                        #VLC 플레이어 실행
+                        instance = vlc.Instance()
+                        player = instance.media_player_new()
+                        media = instance.media_new('rtp://141.223.84.110:1234')
+                        media.get_mrl()
+                        player.set_media(media)
+                        player.play()
+                        print("abcd")
+
                     else:
                         rspMsg.Body.RESPONSE = message.DENIED
                         MessageUtil.send(client, rspMsg)
@@ -94,6 +134,8 @@ class RequestHandler(socketserver.BaseRequestHandler):
                     self.rm.freeCall()
                 else:
                     print("통화 거절")
+
+                continue
 
             elif reqMsg.Header.MSGTYPE == message.REQ_EXIT_VIDEO_STREAMING:
                 None

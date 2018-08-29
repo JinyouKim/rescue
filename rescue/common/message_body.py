@@ -10,14 +10,14 @@ class BodyCommonResponse(ISerializable):
 
         if buffer != None:
             unpacked = struct.unpack(self.struct_fmt, buffer)
-
             self.RESPONSE = unpacked[0]
 
     def getBytes(self):
-            return struct.pack(self.struct_fmt, self.RESPONSE)
+        return struct.pack(self.struct_fmt, self.RESPONSE)
 
     def getSize(self):
-            return self.struct_len
+        return self.struct_len
+
 
 class BodyConnectRequest(ISerializable):
     def __init__(self, buffer):
@@ -47,6 +47,7 @@ class BodyConnectRequest(ISerializable):
         self.struct_fmt = str.format('{0}s', len(buffer))
         self.struct_len = struct.calcsize(self.struct_fmt)
         return self.struct_len
+
 
 class BodyEmpty(ISerializable):
     def __init__(self):

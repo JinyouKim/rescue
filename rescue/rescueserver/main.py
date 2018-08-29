@@ -6,13 +6,12 @@ from rescue.common import message
 from rescue.common.message import Message
 from rescue.common.message_util import MessageUtil
 from rescue.common.message_header import Header
-from rescue.common.message_body import BodyCommonResponse
+from rescue.common.message_body import BodyCommonResponse, BodyEmpty
 from rescue.rescueserver.request_dialog import RequestDialog
 import vlc
 
 HOST = ''
 PORT = 9000
-
 
 
 class RescuerManager:
@@ -26,12 +25,15 @@ class RescuerManager:
     def addRescuer(self, rescuerId, conn, address):
         if rescuerId in self.rescuers:
             conn.send()
+
     def lockCall(self):
         with self.lock:
             self.isCalling = True
+
     def freeCall(self):
         with self.lock:
             self.isCalling = False
+
     def getCallStatus(self):
         with self.lock:
             return self.isCalling
@@ -39,9 +41,11 @@ class RescuerManager:
     def lockToken(self):
         with self.lock:
             self.hasToken = False
+
     def freeToken(self):
         with self.lock:
             self.hasToken = True
+
     def getTokenStatus(self):
         with self.lock:
             return self.hasToken
@@ -72,7 +76,8 @@ class RequestHandler(socketserver.BaseRequestHandler):
                 MessageUtil.send(client, rspMsg)
                 continue
 
-            elif reqMsg.Header.MSGTYPE == message.REQ_GET_TOKEN:    # 음성 토큰 요청
+            # 음성 토큰 요청 처리
+            elif reqMsg.Header.MSGTYPE == message.REQ_GET_TOKEN:
                 rspMsg = Message()
                 rspMsg.Body = BodyCommonResponse(None)
                 rspMsg.Body.RESPONSE = message.ACCEPTED
@@ -81,7 +86,7 @@ class RequestHandler(socketserver.BaseRequestHandler):
                 rspMsg.Header.MSGTYPE = message.REP_GET_TOKEN
                 rspMsg.Header.BODYLEN = rspMsg.Body.getSize()
 
-                if self.rm.getTokenStatus() == True:
+                if self.rm.getTokenStatus():
                     self.rm.lockToken()
                     print('token 방출')
                 else:
@@ -91,10 +96,24 @@ class RequestHandler(socketserver.BaseRequestHandler):
                 MessageUtil.send(client, rspMsg)
                 continue
 
+            # 음성 토큰 반납 처리
             elif reqMsg.Header.MSGTYPE == message.REQ_RETURN_TOKEN:
-                None
+                rspMsg = Message()
+                rspMsg.Body = BodyEmpty()
+
+                rspMsg.Header = Header(None)
+                rspMsg.Header.MSGTYPE = message.REP_RETURN_TOKEN
+                rspMsg.Header.BODYLEN = rspMsg.Body.getSize()
+
+                self.rm.freeToken()
+
+                print("토큰 획득")
+
+                MessageUtil.send(client, rspMsg)
+                continue
+
             elif reqMsg.Header.MSGTYPE == message.REQ_VIDEO_STREAMING:
-                if self.rm.getCallStatus() == False:
+                if not self.rm.getCallStatus():
                     self.rm.lockCall()
                     requestDialog = RequestDialog("구조대원 4")
 
@@ -111,10 +130,10 @@ class RequestHandler(socketserver.BaseRequestHandler):
                     if (ret == 0):
                         MessageUtil.send(client, rspMsg)
 
-                        #VLC 플레이어 실행
+                        # VLC 플레이어 실행
                         instance = vlc.Instance()
                         player = instance.media_player_new()
-                        media = instance.media_new('rtp://141.223.84.110:1234')
+                        media = instance.media_new('rtsp://141.223.84.113:9000/')
                         media.get_mrl()
                         player.set_media(media)
                         player.play()
@@ -123,7 +142,6 @@ class RequestHandler(socketserver.BaseRequestHandler):
                     else:
                         rspMsg.Body.RESPONSE = message.DENIED
                         MessageUtil.send(client, rspMsg)
-
 
                     self.rm.freeCall()
                 else:
@@ -136,8 +154,10 @@ class RequestHandler(socketserver.BaseRequestHandler):
             elif reqMsg.Header.MSGTYPE == message.REP_EXIT_VIDEO_STREAMING:
                 None
 
+
 class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
     pass
+
 
 if __name__ == '__main__':
     server = ThreadedTCPServer((HOST, PORT), RequestHandler)

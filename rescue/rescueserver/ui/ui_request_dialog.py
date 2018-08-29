@@ -10,6 +10,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
 
+
+
 class Ui_RequestDialog(object):
     def setupUi(self, Dialog, rescuer_info):
         Dialog.setObjectName("Dialog")

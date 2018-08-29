@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/rescue/rescueserver/main.py" line="140" />
+    <bookmark url="file://$PROJECT_DIR$/rescue/rescueserver/main.py" line="160" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df1bfacd-a2b1-4a8f-a2f0-c77335259508" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/client_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/socket_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/streamer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/ui/ui_client_dialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/message.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/message_body.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/message_header.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/message_util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueclient/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueclient/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueserver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueserver/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueserver/request_dialog.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueserver/ui/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescueserver/ui/ui_request_dialog.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rescue/common/message_body.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/common/message_body.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rescue/rescueclient/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rescue/rescueserver/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueserver/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +29,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rescue/rescueserver/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="331">
+              <caret line="106" column="43" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
               <folding>
                 <element signature="e#24#43#0" expanded="true" />
               </folding>
@@ -40,54 +38,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/common/message.py">
+      <file leaf-file-name="socketserver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/socketserver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            <state relative-caret-position="416">
+              <caret line="695" selection-start-line="695" selection-end-line="695" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/rescueserver/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="message.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/common/message.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="request_dialog.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rescue/rescueserver/request_dialog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" selection-start-column="23" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="message_header.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/common/message_header.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="361">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="e#24#34#0" expanded="true" />
               </folding>
@@ -95,21 +68,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="message_body.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/common/message_body.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rescue/common/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="streamer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/streamer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+              <folding>
+                <element signature="e#24#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_dialog.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/client_dialog.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="585">
+              <caret line="56" column="39" lean-forward="true" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
+              <folding>
+                <element signature="e#24#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="socket_manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rescue/rescueclient/socket_manager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="214">
+              <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="message_util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rescue/common/message_util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="11" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="11" />
+            <state relative-caret-position="179">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#24#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -141,6 +161,13 @@
       <find>rm</find>
       <find>self</find>
       <find>while</find>
+      <find>multicastPort</find>
+      <find>Ui_D</find>
+      <find>pushButton</find>
+      <find>pushButton_3</find>
+      <find>str</find>
+      <find>RETURN_TOKEN</find>
+      <find>BodyCommonResponse</find>
       <find>serverIp</find>
     </findStrings>
   </component>
@@ -166,22 +193,35 @@
         <option value="$PROJECT_DIR$/rescueserver/main.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/rescueclient/main.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/video_streamer.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/streamer.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/ui/client_dialog.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueserver/request_dialog.py" />
         <option value="$PROJECT_DIR$/rescue/rescueclient/main.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/ui/ui_client_dialog.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/client_dialog.py" />
+        <option value="$PROJECT_DIR$/rescue/common/message_body.py" />
+        <option value="$PROJECT_DIR$/rescue/rescueclient/socket_manager.py" />
         <option value="$PROJECT_DIR$/rescue/rescueserver/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="x" value="620" />
+    <option name="y" value="-21" />
+    <option name="width" value="1210" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,13 +250,19 @@
               <item name="rescue" type="b2602c69:ProjectViewProjectNode" />
               <item name="rescue" type="462c0819:PsiDirectoryNode" />
               <item name="rescue" type="462c0819:PsiDirectoryNode" />
+              <item name="rescueclient" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rescue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rescue" type="462c0819:PsiDirectoryNode" />
+              <item name="rescue" type="462c0819:PsiDirectoryNode" />
               <item name="rescueserver" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,11 +270,12 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\owner\PycharmProjects\rescue\rescue\rescueclient\ui" />
+      <recent name="C:\Users\owner\PycharmProjects\rescue\rescueserver" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\owner\PycharmProjects\rescue\rescue" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\owner\PycharmProjects\rescue\rescueserver" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -244,6 +291,24 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main (2)">
+    <configuration name="client_dialog" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="rescue" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rescue/rescueclient/ui" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\owner\PycharmProjects\rescue\rescue\rescueclient\ui\ui_client_dialog.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rescue" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -275,7 +340,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rescue/rescueclient/main.py" />
-      <option name="PARAMETERS" value="141.223.84.110" />
+      <option name="PARAMETERS" value="141.223.84.110 9000" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -293,24 +358,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rescue/rescueserver/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="rescue" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rescueserver" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rescueserver/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -335,19 +382,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.main (2)" />
       <item itemvalue="Python.message_header" />
       <item itemvalue="Python.main (3)" />
+      <item itemvalue="Python.client_dialog" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main (2)" />
         <item itemvalue="Python.main (3)" />
+        <item itemvalue="Python.client_dialog" />
         <item itemvalue="Python.message_header" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -411,7 +458,28 @@
       <option name="project" value="LOCAL" />
       <updated>1535334355228</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="change directory structure">
+      <created>1535335540395</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1535335540395</updated>
+    </task>
+    <task id="LOCAL-00009" summary="change directory structure">
+      <created>1535335625416</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1535335625416</updated>
+    </task>
+    <task id="LOCAL-00010" summary="change directory structure">
+      <created>1535335714935</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1535335714935</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -429,15 +497,14 @@
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.3293348" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5200211" side_tool="true" visible="true" weight="0.32824427" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.52107483" side_tool="true" visible="true" weight="0.32824427" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.3293348" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.3293348" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47997892" visible="true" weight="0.32824427" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4789252" visible="true" weight="0.32824427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49789253" weight="0.3293348" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48472077" weight="0.3991276" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4841939" weight="0.3991276" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -445,6 +512,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -455,17 +523,11 @@
     <MESSAGE value="revised client" />
     <MESSAGE value="Before Streaming" />
     <MESSAGE value="revision" />
-    <option name="LAST_COMMIT_MESSAGE" value="revision" />
+    <MESSAGE value="change directory structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="change directory structure" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/rescue/rescueserver/request_dialog.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -477,46 +539,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/rescue/common/message_header.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1178">
-          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/request_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/rescue/common/message.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -528,9 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="874">
           <caret line="57" column="36" lean-forward="true" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#34#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -579,13 +598,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueclient/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#24#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/selectors.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -706,23 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/socketserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12046">
-          <caret line="638" selection-start-line="638" selection-end-line="638" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/1398676441/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -744,86 +740,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/common/message_body.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/rescueclient/audio.py" />
+    <entry file="file://$PROJECT_DIR$/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/rescue/common/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/rescueclient/audio.py">
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ui/ui_main_dialog.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ui/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/ui/ui_request_dialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="39" />
           <folding>
-            <element signature="e#25#39#0" expanded="true" />
+            <element signature="e#201#243#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/common/message_util.py">
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ui/ui_client_dialog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="11" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/common/message.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="8" lean-forward="true" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/request_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        <state relative-caret-position="-546">
+          <caret line="56" column="45" lean-forward="true" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#192#234#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/common/message_header.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="133">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/common/__init__.py">
+    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/rescue/common/message_body.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueclient/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="347">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding>
             <element signature="e#24#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/common/message.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/common/message_util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#24#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/socketserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="695" selection-start-line="695" selection-end-line="695" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/client_dialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="56" column="39" lean-forward="true" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueserver/request_dialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#24#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/streamer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rescue/rescueclient/socket_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="86" column="8" selection-start-line="86" selection-start-column="8" selection-end-line="86" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueserver/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="331">
+          <caret line="106" column="43" selection-start-line="106" selection-start-column="43" selection-end-line="106" selection-end-column="43" />
           <folding>
             <element signature="e#24#43#0" expanded="true" />
           </folding>

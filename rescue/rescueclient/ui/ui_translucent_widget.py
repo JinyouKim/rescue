@@ -1,5 +1,5 @@
+# -*- coding: utf-8 -*-
 from PyQt5 import QtWidgets, QtGui, QtCore
-
 
 class UiTranslucentWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):

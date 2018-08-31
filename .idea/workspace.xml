@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df1bfacd-a2b1-4a8f-a2f0-c77335259508" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/rescue/rescueclient/res/opus_audio_stream.sdp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rescue/rescueclient/client_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/client_dialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +32,8 @@
       <file leaf-file-name="ffmpeg_bridge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+            <state relative-caret-position="385">
+              <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -304,7 +302,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main (2)">
+  <component name="RunManager" selected="Python.main (3)">
     <configuration name="client_dialog" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="rescue" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -535,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535721925966</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="gui voice3">
+      <created>1535724918951</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1535724918951</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -549,7 +554,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.3293348" />
@@ -584,7 +588,8 @@
     <MESSAGE value="gui v2" />
     <MESSAGE value="gui voice" />
     <MESSAGE value="gui voice2" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui voice2" />
+    <MESSAGE value="gui voice3" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui voice3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -935,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        <state relative-caret-position="385">
+          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>

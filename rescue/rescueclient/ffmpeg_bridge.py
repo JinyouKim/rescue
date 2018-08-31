@@ -37,7 +37,7 @@ class FfmpegBridge():
         print(self.audio_send_command)
 
     def playBeep(self):
-        threading.Thread(target=sp.call, kwargs={'args':self.beep_command}).start()
+        threading.Thread(target=sp.call, kwargs={'args': self.beep_command}).start()
         print('y')
 
     def playButton(self):
@@ -45,7 +45,7 @@ class FfmpegBridge():
         thread.start()
 
     def sendAudioStream(self):
-        self.ffmpegSubprocess = sp.run(self.audio_recv_command, stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
+        self.ffmpegSubprocess = sp.Popen(' '.join(self.audio_send_command), stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
 
         """
         print(self.audio_send_command)
@@ -54,13 +54,14 @@ class FfmpegBridge():
         """
 
     def playAudioStream(self):
-        self.ffplaySubprocess = sp.run(self.audio_recv_command, stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
+        self.ffplaySubprocess = sp.Popen(self.audio_recv_command, stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
 
     def stopSendingAudioStream(self):
         os.killpg(os.getpgid(self.ffmpegSubprocess.pid), signal.SIGTERM)
 
     def stopPlayingAudioStream(self):
         os.killpg(os.getpgid(self.ffplaySubprocess.pid), signal.SIGTERM)
+        sp.Popen()
 
 
 

@@ -6,9 +6,10 @@ import threading
 
 class FfmpegBridge():
     def __init__(self, sm):
-        FFMPEG_BIN = "ffmepg/ffmpeg.exe"
+        FFMPEG_BIN = "ffmpeg/ffmpeg.exe"
         FFPLAY_BIN = "ffmpeg/ffplay.exe"
         rtpAddress = 'rtp://' + sm.multicastIp + ':' + str(sm.multicastPort)
+        print(rtpAddress)
         self.video_command = [FFMPEG_BIN,
                               '-i', '/dev/video0']
         self.audio_send_command = [FFMPEG_BIN,
@@ -17,11 +18,11 @@ class FfmpegBridge():
                                    '-c:a', 'libopus',
                                    '-b:a', '12k',
                                    '-ac', '1',
-                                   '-f', 'rtp,',
+                                   '-f', 'rtp',
                                    rtpAddress]
         self.audio_recv_command = [FFPLAY_BIN,
                                    '-protocol_whitelist', 'rtp,udp,tcp,file',
-                                   '-nodisp'
+                                   '-nodisp',
                                    'res/opus_audio_stream.sdp']
         self.beep_command = [FFPLAY_BIN,
                              '-autoexit',
@@ -31,6 +32,7 @@ class FfmpegBridge():
                              '-autoexit',
                              '-nodisp',
                              '-i', 'res/sound/button.wav']
+        print(self.audio_send_command)
 
     def playBeep(self):
         threading.Thread(target=sp.call, kwargs={'args':self.beep_command}).start()
@@ -41,6 +43,7 @@ class FfmpegBridge():
         thread.start()
 
     def sendAudioStream(self):
+        print(self.audio_send_command)
         thread = threading.Thread(target=sp.call, kwargs={'args': self.audio_send_command})
         thread.start()
 

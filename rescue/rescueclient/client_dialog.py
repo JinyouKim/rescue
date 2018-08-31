@@ -17,6 +17,7 @@ class ClientDialog():
         self.isVoiceCalling = False
         self.isClickedSignal = False
         self.ffmpegBridge = FfmpegBridge(sm)
+        self.ffmpegBridge.playAudioStream()
 
     def showDialog(self):
         app = QApplication(sys.argv)
@@ -67,6 +68,8 @@ class ClientDialog():
             self.popupFrame.resize(self.dialog.width(), self.dialog.height())
             self.popupFlag = True
             self.popupFrame.show()
+
+            self.ffmpegBridge.sendAudioStream()
             # 음성 전송 처리
             None
         # 요청 실패
@@ -85,7 +88,6 @@ class ClientDialog():
         if not self.isClickedSignal:
             self.isClickedSignal = not self.isClickedSignal
             self.signalFrame.show()
-            self.ffmpegBridge.audio_send_command()
 
         else:
             self.isClickedSignal = not self.isClickedSignal

@@ -47,12 +47,6 @@ class FfmpegBridge():
     def sendAudioStream(self):
         self.ffmpegSubprocess = sp.Popen(' '.join(self.audio_send_command), stdout=sp.PIPE, stderr=sp.PIPE, shell=True, preexec_fn=os.setsid)
 
-        """
-        print(self.audio_send_command)
-        thread = threading.Thread(target=sp.call, kwargs={'args': self.audio_send_command})
-        thread.start()
-        """
-
     def playAudioStream(self):
         self.ffplaySubprocess = sp.Popen(' '.join(self.audio_recv_command), stdout=sp.PIPE, stderr=sp.PIPE, shell=True, preexec_fn=os.setsid)
         self.ffplaySubprocess.read()

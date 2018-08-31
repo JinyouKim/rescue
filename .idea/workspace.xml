@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/rescue/rescueserver/main.py" line="168" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df1bfacd-a2b1-4a8f-a2f0-c77335259508" name="Default" comment="" />
+    <list default="true" id="df1bfacd-a2b1-4a8f-a2f0-c77335259508" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +32,8 @@
       <file leaf-file-name="ffmpeg_bridge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+            <state relative-caret-position="281">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -565,7 +568,28 @@
       <option name="project" value="LOCAL" />
       <updated>1535728928384</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="gui voice3">
+      <created>1535729139982</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1535729139982</updated>
+    </task>
+    <task id="LOCAL-00023" summary="gui voice3">
+      <created>1535729198196</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1535729198196</updated>
+    </task>
+    <task id="LOCAL-00024" summary="gui voice3">
+      <created>1535729832433</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1535729832433</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -581,9 +605,9 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.3293348" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5226554" side_tool="true" visible="true" weight="0.32824427" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.5226554" side_tool="true" visible="true" weight="0.32824427" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49894625" weight="0.3293348" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.3293348" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47734457" visible="true" weight="0.32824427" />
@@ -966,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+        <state relative-caret-position="281">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>

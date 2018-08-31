@@ -32,8 +32,8 @@
       <file leaf-file-name="ffmpeg_bridge.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+            <state relative-caret-position="323">
+              <caret line="56" column="106" selection-start-line="56" selection-start-column="106" selection-end-line="56" selection-end-column="106" />
               <folding>
                 <element signature="e#24#33#0" expanded="true" />
               </folding>
@@ -554,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535727989854</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="gui voice3">
+      <created>1535728489557</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1535728489557</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -570,12 +577,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19125395" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947312" weight="0.3293348" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5226554" side_tool="true" visible="true" weight="0.32824427" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49894625" weight="0.3293348" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.3293348" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47734457" visible="true" weight="0.32824427" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47734457" visible="true" weight="0.32824427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49736565" weight="0.3293348" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -955,8 +962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rescue/rescueclient/ffmpeg_bridge.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+        <state relative-caret-position="323">
+          <caret line="56" column="106" selection-start-line="56" selection-start-column="106" selection-end-line="56" selection-end-column="106" />
           <folding>
             <element signature="e#24#33#0" expanded="true" />
           </folding>

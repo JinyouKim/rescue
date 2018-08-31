@@ -49,8 +49,7 @@ class FfmpegBridge():
 
     def playAudioStream(self):
         self.ffplaySubprocess = sp.Popen(' '.join(self.audio_recv_command), stdout=sp.PIPE, stderr=sp.PIPE, shell=True, preexec_fn=os.setsid)
-        self.ffplaySubprocess.read()
-
+        
     def stopSendingAudioStream(self):
         os.killpg(os.getpgid(self.ffmpegSubprocess.pid), signal.SIGTERM)
 

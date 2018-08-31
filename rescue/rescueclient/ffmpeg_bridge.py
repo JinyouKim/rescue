@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-
+import os
+import signal
 import subprocess as sp
 import threading
 
 
 class FfmpegBridge():
     def __init__(self, sm):
-        FFMPEG_BIN = "ffmpeg/ffmpeg.exe"
-        FFPLAY_BIN = "ffmpeg/ffplay.exe"
+        self.lock = threading.Lock();
+        FFMPEG_BIN = "ffmpeg"
+        FFPLAY_BIN = "ffplay"
         rtpAddress = 'rtp://' + sm.multicastIp + ':' + str(sm.multicastPort)
         print(rtpAddress)
         self.video_command = [FFMPEG_BIN,
@@ -43,14 +45,22 @@ class FfmpegBridge():
         thread.start()
 
     def sendAudioStream(self):
+        self.ffmpegSubprocess = sp.run(self.audio_recv_command, stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
+
+        """
         print(self.audio_send_command)
         thread = threading.Thread(target=sp.call, kwargs={'args': self.audio_send_command})
         thread.start()
+        """
 
     def playAudioStream(self):
-        thread = threading.Thread(target=sp.call, kwargs={'args': self.audio_recv_command})
-        thread.start()
+        self.ffplaySubprocess = sp.run(self.audio_recv_command, stdout=sp.PIPE, shell=True, preexec_fn=os.setsid)
 
+    def stopSendingAudioStream(self):
+        os.killpg(os.getpgid(self.ffmpegSubprocess.pid), signal.SIGTERM)
+
+    def stopPlayingAudioStream(self):
+        os.killpg(os.getpgid(self.ffplaySubprocess.pid), signal.SIGTERM)
 
 
 

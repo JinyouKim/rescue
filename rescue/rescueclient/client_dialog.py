@@ -82,6 +82,7 @@ class ClientDialog():
             self.isVoiceCalling = False
             self.popupFrame.close()
             self.popupFlag = False
+            self.ffmpegBridge.stopSendingAudioStream()
 
     def clickedSignalButton(self):
         self.ffmpegBridge.playButton()

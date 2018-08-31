@@ -71,9 +71,9 @@ if __name__ == '__main__':
     serverIp = sys.argv[1]
     serverPort = int(sys.argv[2])
     multicastIp = "239.0.0.1"
-    multicastPort = 9111
+    multicastPort = serverPort
 
-    sm = SocketManager(serverIp, serverPort, "239.0.0.1")
+    sm = SocketManager(serverIp, serverPort, multicastIp, multicastPort)
     sm.connectServer()
     sm.joinMuticastGroup()
 

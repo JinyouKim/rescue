@@ -16,7 +16,7 @@ class ClientDialog():
         self.sm = sm
         self.isVoiceCalling = False
         self.isClickedSignal = False
-        self.ffmpegBridge = FfmpegBridge()
+        self.ffmpegBridge = FfmpegBridge(sm)
 
     def showDialog(self):
         app = QApplication(sys.argv)
@@ -85,6 +85,7 @@ class ClientDialog():
         if not self.isClickedSignal:
             self.isClickedSignal = not self.isClickedSignal
             self.signalFrame.show()
+            self.ffmpegBridge.audio_send_command()
 
         else:
             self.isClickedSignal = not self.isClickedSignal

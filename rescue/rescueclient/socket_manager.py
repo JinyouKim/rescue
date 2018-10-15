@@ -12,7 +12,8 @@ from rescue.common.message_util import MessageUtil
 
 
 class SocketManager():
-    def __init__(self, serverIp, serverPort, multicastIp, multicastPort):
+    def __init__(self, myIp, serverIp, serverPort, multicastIp, multicastPort):
+        self.myIp = myIp
         self.serverIp = serverIp
         self.serverPort = serverPort
         self.multicastIp = multicastIp

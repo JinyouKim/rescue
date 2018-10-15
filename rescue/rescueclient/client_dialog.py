@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 import sys
+import socketserver
+import threading
+import queue
 
 from PyQt5.QtCore import QTimeLine
 from PyQt5.QtGui import QPainter, QPixmap
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtCore import QObject
 
 from rescue.rescueclient.ffmpeg_bridge import FfmpegBridge
 from rescue.rescueclient.socket_manager import SocketManager
@@ -10,14 +15,140 @@ from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox, QStackedWidget, 
 from rescue.rescueclient.ui.ui_client_dialog import UiClientDialog
 from rescue.rescueclient.ui.ui_signal_widget import UiSignalWidget
 from rescue.rescueclient.ui.ui_translucent_widget import UiTranslucentWidget
+from rescue.rescueclient.sound import SoundManager
+from rescue.rescueclient.codec import OpusCodec
+from rescue.rescueclient.streaming import VoiceStreaming
+
+from rescue.common import message
+from rescue.common.message import Message
+from rescue.common.message_util import MessageUtil
+from rescue.common.message_header import Header
+from rescue.common.message_body import BodyCommonResponse, BodyEmpty
+
+HOST = '192.0.1.10'
+PORT = 9900
+
+REMOTE = '122'
+
+q1 = queue.Queue()
+q2 = queue.Queue()
+
+class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    pass
+
+class RequestHandler(socketserver.BaseRequestHandler):
+    def handle(self):
+        client = self.request
+        try:
+            while True:
+                reqMsg = MessageUtil.receive(client)
+                print(reqMsg.Header.MSGTYPE)
+                if reqMsg == None:
+                    continue
+                if reqMsg.Header.MSGTYPE == message.REQ_CALL: 
+                    global REMOTE
+                    print(self.client_address[0])
+                    REMOTE = self.client_address[0]
+                    q1.put(0)
+                    isAccepted = q2.get()
+
+                    rspMsg = Message()
+                    rspMsg.Body = BodyCommonResponse(None)
+                    if isAccepted:
+                        rspMsg.Body.RESPONSE = message.ACCEPTED
+                    else:
+                        rspMsg.Body.RESPONSE = message.DENIED
+
+                    rspMsg.Header = Header(None)
+                    rspMsg.Header.MSGTYPE = message.REP_CALL
+                    print(message.REP_CALL)
+                    rspMsg.Header.BODYLEN = rspMsg.Body.getSize()
+                    MessageUtil.send(client, rspMsg)
+
+                    continue
+        except Exception as err:
+            print(err)
+
+class CallSignal(QObject):
+    callSignal = pyqtSignal()
+    
+    def run(self):
+        self.callSignal.emit()
+
 
 class ClientDialog():
+
     def __init__(self, sm):
         self.sm = sm
+        self.soundManager= SoundManager()
         self.isVoiceCalling = False
         self.isClickedSignal = False
         self.ffmpegBridge = FfmpegBridge(sm)
         self.ffmpegBridge.playAudioStream()
+        self.callSignal = CallSignal()
+        self.callSignal.callSignal.connect(self.call_handle)
+        self.streamThread = threading.Thread(target = self.streaming_handle)
+        self.playThread = threading.Thread(target = self.play_thread)
+        self.multicastSendThread = threading.Thread(target = self.multicast_stream_thread, args=("task",))
+        
+        self.vs = None
+        self.oc = OpusCodec()
+        
+        requestListener = ThreadedTCPServer((HOST, PORT), RequestHandler)
+        threading.Thread(target=requestListener.serve_forever).start()
+        callThread = threading.Thread(target = self.call_thread)
+        callThread.start()
+
+    def multicast_stream_thread(self, arg):
+        self.vs = VoiceStreaming(self.sm.myIp, self.sm.multicastPort, self.sm.multicastIp, self.sm.multicastPort)
+        self.soundManager.startRecord()
+        t = threading.currentThread()
+        while getattr(t, "do_run", True):
+            print("AAA")
+            pcm = self.soundManager.getInputFrame().tobytes()
+            self.vs.sendVoicePacket(self.oc.encodeFrames(pcm))
+        self.soundManager.stopRecord()
+        print('bbb')
+
+    def play_thread(self):
+        isStarted = False
+        while True:
+            opusFrame = self.vs.recvVoicePacket()
+            pcm = self.oc.decodeFrames(opusFrame)
+            self.soundManager.pushFrame(pcm)
+            if isStarted is False:
+                 self.soundManager.startPlay()
+            isStarted = True        
+        
+
+    def streaming_handle(self):        
+        self.vs = VoiceStreaming('192.168.1.10', 8000, REMOTE, 8000)
+        print(REMOTE)
+        self.soundManager.startRecord()
+        self.playThread.start()
+
+        while True:
+            pcm = self.soundManager.getInputFrame().tobytes()
+            self.vs.sendVoicePacket(self.oc.encodeFrames(pcm))
+            
+        
+    def call_handle(self):
+        self.soundManager.playRing()
+        choice = QMessageBox.question(self.dialog, "Call", "Calling from Rescuee, Accept?", QMessageBox.Yes | QMessageBox.No)
+        isAccepted = False
+        if choice == QMessageBox.Yes:
+            q2.put(True)
+            self.streamThread.start()
+            # rtp Thread
+            
+        else:
+            q2.put(False)
+        self.soundManager.stopRing()
+
+    def call_thread(self):
+        while True:
+            q1.get()        
+            self.callSignal.run()
 
     def showDialog(self):
         app = QApplication(sys.argv)
@@ -41,6 +172,7 @@ class ClientDialog():
         self.signalFrame.move(50, 50)
 
         return app.exec_()
+
 
     def clickedCameraButton(self):
         self.ffmpegBridge.playButton()
@@ -69,9 +201,12 @@ class ClientDialog():
             self.popupFlag = True
             self.popupFrame.show()
 
-            self.ffmpegBridge.sendAudioStream()
+            #self.ffmpegBridge.sendAudioStream()
+
             # 음성 전송 처리
-            None
+            self.multicastSendThread = threading.Thread(target = self.multicast_stream_thread, args=("task",))
+            self.multicastSendThread.start()        
+           
         # 요청 실패
         else:
             None
@@ -82,11 +217,13 @@ class ClientDialog():
             self.isVoiceCalling = False
             self.popupFrame.close()
             self.popupFlag = False
-            self.ffmpegBridge.stopSendingAudioStream()
+            self.multicastSendThread.do_run = False
+#            self.multicastSendThread.stop()
 
     def clickedSignalButton(self):
         self.ffmpegBridge.playButton()
         if not self.isClickedSignal:
+
             self.isClickedSignal = not self.isClickedSignal
             self.signalFrame.show()
 

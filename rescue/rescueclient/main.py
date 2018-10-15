@@ -14,6 +14,8 @@ from rescue.rescueclient.socket_manager import SocketManager
 
 from rescue.rescueclient.ui.ui_client_dialog import UiClientDialog
 
+HOST = ''
+PORT = 9112
 
 class FaderWidget(QWidget):
 
@@ -64,16 +66,17 @@ class StackedWidget(QStackedWidget):
 CHUNK_SIZE = 4096
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("usage: {0} <server IP> <server port>".format(sys.argv[0]))
+    if len(sys.argv) < 3:
+        print("usage: {0} <server IP> <server port> <my Ip>".format(sys.argv[0]))
         sys.exit(0)
 
     serverIp = sys.argv[1]
     serverPort = int(sys.argv[2])
+    myIp = sys.argv[3]
     multicastIp = "239.0.0.1"
     multicastPort = serverPort
 
-    sm = SocketManager(serverIp, serverPort, multicastIp, multicastPort)
+    sm = SocketManager(myIp, serverIp, serverPort, multicastIp, multicastPort)
     sm.connectServer()
     sm.joinMuticastGroup()
 

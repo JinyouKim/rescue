@@ -32,6 +32,8 @@ class MessageUtil:
 
         header = Header(hBuffer)
 
+        print(header.MSGTYPE);
+        print(header.BODYLEN);
         totalRecv = 0
         bBuffer = bytes()
         sizeToRead = header.BODYLEN
@@ -56,7 +58,8 @@ class MessageUtil:
                 or header.MSGTYPE == message.REP_RETURN_TOKEN\
                 or header.MSGTYPE == message.REQ_VIDEO_STREAMING\
                 or header.MSGTYPE == message.REQ_EXIT_VIDEO_STREAMING\
-                or header.MSGTYPE == message.REP_EXIT_VIDEO_STREAMING:
+                or header.MSGTYPE == message.REP_EXIT_VIDEO_STREAMING\
+				or header.MSGTYPE == message.REQ_CALL:
             body = None
         else:
             raise Exception(

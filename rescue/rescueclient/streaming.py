@@ -20,7 +20,7 @@ class RtpPacket:
         self.header[1] = self.header[1] | pt
 
         self.header[2] = seqnum >> 8
-        self.header[3] = seqnum
+        self.header[3] = (seqnum >> 0) & 0xff
 
         
         self.header[4] = (timestamp >> 24) & 0xFF
@@ -56,30 +56,37 @@ class VoiceStreaming:
         self.recvRtpPacket = RtpPacket()
         self.sndSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.recvSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.recvSocket.settimeout(0.5)
+#        self.recvSocket.settimeout(0.5)
 
         self.sndSeqNum = 0x00
         self.recvSeqNum = 0x00
         
         try:
+            print(self.localIp)
+            print(self.localPort)
             self.recvSocket.bind((self.localIp, self.localPort))
-        except:
-            print('exception')
+        except Exception as err:
+            print(err)
 
 
     def sendVoicePacket(self, voiceData):
         self.sndRtpPacket.encode(2, 0, 0, 0, self.sndSeqNum, 0, 18, self.ssrc, voiceData)
         self.sndSocket.sendto(self.sndRtpPacket.getPacket(), (self.remoteIp, self.remotePort))
 
-        if self.sndSeqNum != 0xff:
-            self.sndSeqNum = self.sndSeqNum + 0x01
+        if self.sndSeqNum != 0xffff:
+            self.sndSeqNum = self.sndSeqNum + 0x0001
         else:
-            self.sndSeqNum = 0x00
+            self.sndSeqNum = 0x0000
 
     def recvVoicePacket(self):
         data, addr = self.recvSocket.recvfrom(256)
         self.sndRtpPacket.decode(data)
         return self.sndRtpPacket.getPayload()
+
+    def closeSocket(self):
+        self.sndSocket.close()
+        self.recvSocket.close()
+
 
         
         

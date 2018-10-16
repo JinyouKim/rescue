@@ -77,9 +77,9 @@ class CallSignal(QObject):
 
 
 class ClientDialog():
-
-    def __init__(self, sm):
+    def __init__(self, sm, thriftUi):
         self.sm = sm
+        self.thriftUi = thriftUi
         self.soundManager= SoundManager()
         self.isVoiceCalling = False
         self.isClickedSignal = False
@@ -87,10 +87,13 @@ class ClientDialog():
         self.ffmpegBridge.playAudioStream()
         self.callSignal = CallSignal()
         self.callSignal.callSignal.connect(self.call_handle)
-        self.streamThread = threading.Thread(target = self.streaming_handle)
-        self.playThread = threading.Thread(target = self.play_thread)
+        self.streamThread = threading.Thread(target = self.streaming_handle, args = ("tast",))
+        self.playThread = threading.Thread(target = self.play_thread, args = ("tast",))
         self.multicastSendThread = threading.Thread(target = self.multicast_stream_thread, args=("task",))
         
+        self.multicastRecvThread = threading.Thread(target = self.multicast_play_thread, args=("task",))
+        self.multicastRecvThread.start()
+
         self.vs = None
         self.oc = OpusCodec()
         
@@ -100,36 +103,59 @@ class ClientDialog():
         callThread.start()
 
     def multicast_stream_thread(self, arg):
-        self.vs = VoiceStreaming(self.sm.myIp, self.sm.multicastPort, self.sm.multicastIp, self.sm.multicastPort)
+        vs = VoiceStreaming(self.sm.myIp, self.sm.multicastPort, self.sm.multicastIp, self.sm.multicastPort)
         self.soundManager.startRecord()
         t = threading.currentThread()
         while getattr(t, "do_run", True):
-            print("AAA")
             pcm = self.soundManager.getInputFrame().tobytes()
-            self.vs.sendVoicePacket(self.oc.encodeFrames(pcm))
-        self.soundManager.stopRecord()
-        print('bbb')
+            vs.sendVoicePacket(self.oc.encodeFrames(pcm))
 
-    def play_thread(self):
+        self.soundManager.stopRecord()
+        vs.closeSocket()
+
+    def play_thread(self, arg):
+        t = threading.currentThread()
         isStarted = False
-        while True:
+        while getattr(t, "do_run", True):
             opusFrame = self.vs.recvVoicePacket()
             pcm = self.oc.decodeFrames(opusFrame)
             self.soundManager.pushFrame(pcm)
             if isStarted is False:
                  self.soundManager.startPlay()
-            isStarted = True        
-        
+            isStarted = True
 
-    def streaming_handle(self):        
-        self.vs = VoiceStreaming('192.168.1.10', 8000, REMOTE, 8000)
+        self.soundManager.stopPlay()
+
+    def multicast_play_thread(self, arg):
+        vs = VoiceStreaming(self.sm.myIp, self.sm.multicastPort, self.sm.multicastIp, self.sm.multicastPort)
+        isStarted = False
+        t = threading.currentThread()
+        while getattr(t, "do_run", True):
+            opusFrame = vs.recvVoicePacket()
+            pcm = self.oc.decodeFrames(opusFrame)
+            self.soundManager.pushFrame(pcm)
+            if isStarted is False:
+                 self.soundManager.startPlay()
+            isStarted = True
+
+        vs.closeSocket()
+        self.soundManager.stopPlay()
+             
+        
+    def streaming_handle(self, arg):        
+        self.vs = VoiceStreaming('192.0.1.10', 8000, REMOTE, 8000)
         print(REMOTE)
         self.soundManager.startRecord()
         self.playThread.start()
+        t = threading.currentThread()
 
-        while True:
+        while getattr(t, "do_run", True):
             pcm = self.soundManager.getInputFrame().tobytes()
             self.vs.sendVoicePacket(self.oc.encodeFrames(pcm))
+
+        self.playThread.do_run = False
+        self.soundManager.stopRecord()
+        self.vs.closeSocket()
             
         
     def call_handle(self):
@@ -138,6 +164,7 @@ class ClientDialog():
         isAccepted = False
         if choice == QMessageBox.Yes:
             q2.put(True)
+            self.multicastRecvThread.do_run = False
             self.streamThread.start()
             # rtp Thread
             
@@ -218,7 +245,6 @@ class ClientDialog():
             self.popupFrame.close()
             self.popupFlag = False
             self.multicastSendThread.do_run = False
-#            self.multicastSendThread.stop()
 
     def clickedSignalButton(self):
         self.ffmpegBridge.playButton()

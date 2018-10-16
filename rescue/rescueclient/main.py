@@ -11,6 +11,7 @@ from PyQt5.QtWidgets import QWidget, QStackedWidget
 
 from rescue.rescueclient.client_dialog import ClientDialog
 from rescue.rescueclient.socket_manager import SocketManager
+from rescue.rescueclient.thrift_ui import ThriftUI
 
 from rescue.rescueclient.ui.ui_client_dialog import UiClientDialog
 
@@ -65,14 +66,16 @@ class StackedWidget(QStackedWidget):
 
 CHUNK_SIZE = 4096
 
-if __name__ == '__main__':
-    if len(sys.argv) < 3:
-        print("usage: {0} <server IP> <server port> <my Ip>".format(sys.argv[0]))
+def main():
+    if len(sys.argv) < 6:
+        print("usage: {0} <my IP> <server IP> <server PORT> <thrift IP> <thrift PORT>".format(sys.argv[0]))
         sys.exit(0)
 
-    serverIp = sys.argv[1]
-    serverPort = int(sys.argv[2])
-    myIp = sys.argv[3]
+    myIp = sys.argv[1]
+    serverIp = sys.argv[2]
+    serverPort = int(sys.argv[3])
+    thriftIp = sys.argv[4]
+    thriftPort = int(sys.argv[5])
     multicastIp = "239.0.0.1"
     multicastPort = serverPort
 
@@ -80,11 +83,15 @@ if __name__ == '__main__':
     sm.connectServer()
     sm.joinMuticastGroup()
 
-    clientDialog = ClientDialog(sm)
+    thriftUi = ThriftUI()
+    thriftUi.connect(thriftIp, thriftPort, 'definition.thrift')
+
+    clientDialog = ClientDialog(sm, thriftUi)
 
     sys.exit(clientDialog.showDialog())
 
-
+if __name__ == '__main__':
+    main()
 
 
 

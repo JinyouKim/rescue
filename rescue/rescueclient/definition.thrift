@@ -7,7 +7,8 @@ struct THRIFT_SMS_FMAN_DATA {
   // Set true if search count button is pressed
   4: bool isSearchCount,
   // Set true if people found button is pressed
-  5: bool isSearchPeople
+  5: bool isSearchPeople,
+  6: bool isSosFman
 }
 
 struct THRIFT_MAP_IMAGE {

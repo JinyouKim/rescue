@@ -9,12 +9,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimeLine
 from PyQt5.QtGui import QPainter, QPixmap
-from PyQt5.QtWidgets import QMessageBox, QVBoxLayout, QStackedWidget, QTextEdit
+from PyQt5.QtWidgets import QMessageBox, QVBoxLayout, QStackedWidget, QTextEdit, QLayout
 from PyQt5.QtWidgets import QWidget
+from rescue.rescueclient.ui.ui_video_widget import UiVideoWidget
 
 
 class FaderWidget(QWidget):
-
     def __init__(self, old_widget, new_widget):
         QWidget.__init__(self, new_widget)
 
@@ -58,15 +58,24 @@ class StackedWidget(QStackedWidget):
     def setPage2(self):
         self.setCurrentIndex(1)
 
-
 class UiClientDialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Dialog.sizePolicy().hasHeightForWidth())
         Dialog.resize(480, 800)
         Dialog.setModal(True)
         Dialog.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
+        Dialog.setFixedSize(480, 800)
+        Dialog.setSizePolicy(sizePolicy)
+        Dialog.setMinimumSize(480, 800)
+        Dialog.setMaximumSize(480, 800)
+        Dialog.setSizeGripEnabled(False)
         mainWidget = QWidget()
-
+        
+        self.videoUi = UiVideoWidget(Dialog)
         # Dialog 레이아웃
         self.verticalLayout = QtWidgets.QVBoxLayout(mainWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -74,26 +83,37 @@ class UiClientDialog(object):
         self.verticalLayout.setObjectName("verticalLayout")
 
         # 프레임
-        self.frame = QtWidgets.QFrame(mainWidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.mapLabel = QtWidgets.QLabel(mainWidget)
+        self.mapLabel.setMaximumSize(470,800)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setLineWidth(1)
-        self.frame.setObjectName("frame")
+        sizePolicy.setHeightForWidth(self.mapLabel.sizePolicy().hasHeightForWidth())
+        self.mapLabel.setSizePolicy(sizePolicy)
+        self.mapLabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.mapLabel.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.mapLabel.setLineWidth(1)
+        self.mapLabel.setObjectName("mapLabel")
+        self.verticalLayout.addWidget(self.mapLabel)
 
-        # 버튼 3개를 위한 레이아웃
-        self.verticalLayout.addWidget(self.frame)
         self.line = QtWidgets.QFrame(mainWidget)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout.addWidget(self.line)
+
+        self.sensorDataLabel = QtWidgets.QLabel("", mainWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        self.sensorDataLabel.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.mapLabel.sizePolicy().hasHeightForWidth())
+        self.verticalLayout.addWidget(self.sensorDataLabel)
+
+        # 버튼 3개를 위한 레이아웃        
+        
         self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setSpacing(6)
+        self.horizontalLayout.setSpacing(1)
         self.horizontalLayout.setObjectName("horizontalLayout")
 
         # 카메라 버튼
@@ -113,7 +133,6 @@ class UiClientDialog(object):
         self.voiceButton = QtWidgets.QPushButton(mainWidget)
         self.voiceButton.setSizePolicy(sizePolicy)
         self.voiceButton.setMinimumSize(QtCore.QSize(150, 150))
-        self.voiceButton.setText("")
         self.voiceButton.setIconSize(QtCore.QSize(150, 150))
         self.voiceButton.setCheckable(False)
         self.voiceButton.setChecked(False)
@@ -136,12 +155,19 @@ class UiClientDialog(object):
         self.signalButton.setMinimumSize(QtCore.QSize(150, 150))
         self.signalButton.setObjectName("signalButton")
         self.horizontalLayout.addWidget(self.signalButton)
-        self.verticalLayout.addLayout(self.horizontalLayout)
         self.signalButton.setText("signal")
+
+
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        
+#        self.verticalLayout.setSizeConstraint(QLayout.SetMinimumSize)
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.stack = StackedWidget()
         self.stack.addWidget(mainWidget)
-        self.stack.addWidget(QTextEdit())
+        self.stack.addWidget(self.videoUi)
 
         layout = QVBoxLayout(Dialog)
         layout.addWidget(self.stack)

@@ -64,6 +64,7 @@ class VoiceStreaming:
         try:
             print(self.localIp)
             print(self.localPort)
+            self.recvSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             self.recvSocket.bind((self.localIp, self.localPort))
         except Exception as err:
             print(err)

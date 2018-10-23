@@ -33,7 +33,7 @@ class SoundManager():
             raise sd.CallbackAbort
         assert not status
         try:
-            data = self.outputQ.get_nowait()
+            data = self.outputQ.get()
         except queue.Empty:
             print('buffer is empry', file=sys.stderr)
             return

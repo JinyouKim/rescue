@@ -145,5 +145,24 @@ class SocketManager():
         print('return accepted')
         return True
 
+    def requestExitVideo(self):
+        reqMsg = Message()
+        reqMsg.Body = BodyEmpty()
+        reqMsg.Header = Header(None)
+        reqMsg.Header.MSGTYPE = message.REQ_EXIT_VIDEO_STREAMING
+        reqMsg.Header.BODYLEN = 0
+
+        # Ending Video Stream
+        MessageUtil.send(self.sockServer, reqMsg)
+
+        # 요청 결과
+        rspMsg = MessageUtil.receive(self.sockServer)
+
+        if rspMsg.Header.MSGTYPE != message.REP_EXIT_VIDEO_STREAMING:
+            print('Error')
+            return False
+        print('exit video')
+        return True
+
     def disconnectServer(self):
         self.sockServer.close()

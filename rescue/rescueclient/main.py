@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimeLine
 from PyQt5.QtGui import QPixmap, QPainter
 from PyQt5.QtWidgets import QWidget, QStackedWidget
+from rescue.rescueclient.thread_thrift import ThreadThrift
 
 from rescue.rescueclient.client_dialog import ClientDialog
 from rescue.rescueclient.socket_manager import SocketManager
@@ -67,8 +68,8 @@ class StackedWidget(QStackedWidget):
 CHUNK_SIZE = 4096
 
 def main():
-    if len(sys.argv) < 6:
-        print("usage: {0} <my IP> <server IP> <server PORT> <thrift IP> <thrift PORT>".format(sys.argv[0]))
+    if len(sys.argv) < 7:
+        print("usage: {0} <my IP> <server IP> <server PORT> <thrift IP> <thrift PORT> <myID>".format(sys.argv[0]))
         sys.exit(0)
 
     myIp = sys.argv[1]
@@ -78,15 +79,17 @@ def main():
     thriftPort = int(sys.argv[5])
     multicastIp = "239.0.0.1"
     multicastPort = serverPort
+    myID = int(sys.argv[6])
 
     sm = SocketManager(myIp, serverIp, serverPort, multicastIp, multicastPort)
     sm.connectServer()
     sm.joinMuticastGroup()
 
-    thriftUi = ThriftUI()
-    thriftUi.connect(thriftIp, thriftPort, 'definition.thrift')
+    threadThrift = ThreadThrift(thriftIp, thriftPort, myID)
 
-    clientDialog = ClientDialog(sm, thriftUi)
+    clientDialog = ClientDialog(sm, threadThrift)
+
+    
 
     sys.exit(clientDialog.showDialog())
 

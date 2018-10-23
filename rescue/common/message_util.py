@@ -59,7 +59,8 @@ class MessageUtil:
                 or header.MSGTYPE == message.REQ_VIDEO_STREAMING\
                 or header.MSGTYPE == message.REQ_EXIT_VIDEO_STREAMING\
                 or header.MSGTYPE == message.REP_EXIT_VIDEO_STREAMING\
-				or header.MSGTYPE == message.REQ_CALL:
+				or header.MSGTYPE == message.REQ_CALL\
+                or header.MSGTYPE == message.REQ_CALL_STOP:
             body = None
         else:
             raise Exception(
